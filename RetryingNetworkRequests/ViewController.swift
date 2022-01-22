@@ -76,7 +76,7 @@ class ViewController: UIViewController {
     
     private func getAvatarFromTheServer() -> AnyPublisher<UIImage, Error> {
         
-        let url = URL(string: "https://picsum.photos/corrupted")!
+        let url = URL(string: "https://picsum.photos/1000")!
         
         return Deferred {
             Future { promise in
