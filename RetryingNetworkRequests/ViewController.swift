@@ -42,7 +42,10 @@ class ViewController: UIViewController {
         self.$state
             .receive(on: DispatchQueue.main)
             .map { $0.rawValue }
-            .assign(to: \.navigationItem.title, on: self)
+            .handleEvents(receiveOutput: { [weak self] stateString in
+                self?.navigationItem.title = stateString
+            })
+            .sink { _ in }
             .store(in: &cancellables)
     }
     
